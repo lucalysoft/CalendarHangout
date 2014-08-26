@@ -6,13 +6,13 @@
         <string>com.yeraze.hangoutFix</string>
         <key>ProgramArguments</key>
         <array>
-            <string>/Users/rhand/Development/CalendarHangout/hangoutFix.py</string>
+            <string>/Users/morganestes/.hangoutFix/CalendarHangout/hangoutFix.py</string>
         </array>
         <key>StandardOutPath</key>
-        <string>/Users/rhand/.hangoutFix/output.log</string>
+        <string>/Users/morganestes/.hangoutFix/output.log</string>
         <key>StandardErrorPath</key>
-        <string>/Users/rhand/.hangoutFix/error.log</string>
+        <string>/Users/morganestes/.hangoutFix/error.log</string>
         <key>StartInterval</key>
-        <integer>86400</integer>
+        <integer>7200</integer>
     </dict>
 </plist>
