@@ -43,7 +43,7 @@ from oauth2client import file
 from oauth2client import client
 from oauth2client import tools
 
-CalendarID = '' #set it here, or pass it as an argument (preferred)
+CalendarID = 'your.email@gmail.com' #set it here, or pass it as an argument (preferred)
 
 # Parser for command-line arguments.
 parser = argparse.ArgumentParser(
@@ -75,11 +75,14 @@ FLOW = client.flow_from_clientsecrets(CLIENT_SECRETS,
 def main(argv):
     # Parse the command-line flags.
     flags = parser.parse_args(argv[1:])
+    global CalendarID
 
     # Check to make sure we have a CalendarID to work with
-    if not CalendarID:
+    # --calendar flag overrides the value coded in the script
     if flags.calendar:
       CalendarID = flags.calendar
+    elif CalendarID and not flags.calendar:
+      CalendarID = CalendarID
     else:
       print('Calendar ID is required for sync.')
       print('Use --calendar to set it from the command line.')
@@ -108,7 +111,7 @@ def main(argv):
         today = "%sZ" % (datetime.datetime.utcnow().isoformat())
         enddate = "%sZ" % (datetime.datetime.utcnow() +
                    datetime.timedelta(days=14)).isoformat()
-        print("Retrieving events from %s to %s" % (today, enddate))
+        print("Retrieving events from %s to %s from %s" % (today, enddate, CalendarID))
         events = service.events().list(calendarId=CalendarID,
                 orderBy = "startTime",
                 timeMin = today, timeMax = enddate,
