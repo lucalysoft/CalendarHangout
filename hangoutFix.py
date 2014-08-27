@@ -43,7 +43,7 @@ from oauth2client import file
 from oauth2client import client
 from oauth2client import tools
 
-CalendarID = "morgan.estes@get10up.com"
+CalendarID = '' #set it here, or pass it as an argument (preferred)
 
 # Parser for command-line arguments.
 parser = argparse.ArgumentParser(
@@ -51,6 +51,8 @@ parser = argparse.ArgumentParser(
     formatter_class=argparse.RawDescriptionHelpFormatter,
     parents=[tools.argparser])
 
+parser.add_argument('--calendar',
+  help='The Google Calendar ID')
 
 # CLIENT_SECRETS is name of a file containing the OAuth 2.0 information for this
 # application, including client_id and client_secret. You can see the Client ID
@@ -73,6 +75,16 @@ FLOW = client.flow_from_clientsecrets(CLIENT_SECRETS,
 def main(argv):
     # Parse the command-line flags.
     flags = parser.parse_args(argv[1:])
+
+    # Check to make sure we have a CalendarID to work with
+    if not CalendarID:
+    if flags.calendar:
+      CalendarID = flags.calendar
+    else:
+      print('Calendar ID is required for sync.')
+      print('Use --calendar to set it from the command line.')
+      exit()
+
 
     # If the credentials don't exist or are invalid run through the native client
     # flow. The Storage object will ensure that if successful the good

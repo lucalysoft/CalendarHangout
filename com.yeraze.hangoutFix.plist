@@ -7,6 +7,8 @@
         <key>ProgramArguments</key>
         <array>
             <string>/Users/morganestes/.hangoutFix/CalendarHangout/hangoutFix.py</string>
+            <string>--calendar</string>
+            <string>morgan.estes@get10up.com</string>
         </array>
         <key>StandardOutPath</key>
         <string>/Users/morganestes/.hangoutFix/output.log</string>
