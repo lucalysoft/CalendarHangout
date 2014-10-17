@@ -20,7 +20,7 @@ Before running this, you need to get:
 	* Select "Enable an API" and turn on the "Calendar API"
 	* Under "APIs & Auth", click "Credentials"
 	* Click "Create a new Client ID", and select "Installed Application", select platform "Other"
-	* Then select "Download JSON" 
+	* Then select "Download JSON"
 
 Now, that list of prereqs may seem daunting to the Python-uninitiated, but it's not bad.  Just do this:
 
@@ -37,6 +37,9 @@ If you're a [Homebrew](http://brew.sh) User, then you'll optionally also need to
 pip install pyobjc
 ```
 _That one takes a while_.
+
+Note: if you receive errors about `GameKit` when trying to run the script, your `pyobjc` library may be out of date.
+Clone the [pyobjc](https://bitbucket.org/ronaldoussoren/pyobjc/) repo (make sure to use commit `a2cdc24`) and install it locally.
 
 If any of those complain about permission denied, then just prefix the command with `sudo` and it should work.
 
