@@ -49,7 +49,7 @@ Before  your first run (which you'll need to do manually from the commandline)
 
 1. Create a `~/.hangoutFix` directory
 2. Place your shiny new `client_secrets.json` file in it.
-3. Change the "CalendarID" at the Top of `hangoutFix.py` to your calendar.
+3. Change the "CalendarID" at the Top of `hangoutFix.py` to your calendar, or use the `--calendar` flag.
 4. Now run it.. It will redirect you to your browser to enable access.
 5. Once you've granted access, it should take off and update.
 
@@ -63,12 +63,13 @@ This script won't work inside of cron.. Don't ask me, blame apple.
 Because of that, if you really want to automate it, you'll need to do so via launchctl.
 
 So, edit the `com.yeraze.hangoutFix.plist` file here to reflect the directory of where
-you placed the newly corrected hangoutFix.py script.  Then:
+you placed the newly corrected hangoutFix.py script, and the calendar ID/email to use. Then:
 
+* `ln -s com.yeraze.hangoutFix.plist ~/Library/LaunchAgents`
 * launchctl load com.yeraze.hangoutFix.plist
 * launchctl start com.yeraze.hangoutFix
 
-That should start off the job.  After that one completes, it should start another every 24 hours!
+That should start off the job.  After that one completes, it should start another every 4 hours!
 
 *Note* If you get a strange error like:
 ```
